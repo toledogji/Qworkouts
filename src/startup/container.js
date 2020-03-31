@@ -8,6 +8,8 @@ const { HomeController } = require('../controllers');
 //routes
 const { HomeRoutes } = require('../routes/index.routes');
 const Routes = require('../routes');
+//models
+const { UserModel, ExcerciseModel, WorkoutModel } = require('../models');
 
 const container = createContainer();
 
@@ -18,7 +20,10 @@ container
         app: asClass(app).singleton(),
         HomeService: asClass(HomeService).singleton(),
         HomeController : asClass(HomeController.bind(HomeController)).singleton(),
-        HomeRoutes: asFunction(HomeRoutes).singleton()
+        HomeRoutes: asFunction(HomeRoutes).singleton(),
+        UserModel: asValue(UserModel),
+        ExcerciseModel: asValue(ExcerciseModel),
+        WorkoutModel: asValue(WorkoutModel)
     })
 
 module.exports = container;
