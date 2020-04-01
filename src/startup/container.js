@@ -2,7 +2,7 @@ const { createContainer, asClass, asValue, asFunction } = require('awilix');
 const config = require('../config');
 const app = require('.');
 //services
-const { HomeService } = require('../services');
+const { HomeService, UserService, WorkoutService, ExerciseService } = require('../services');
 //controllers
 const { HomeController } = require('../controllers');
 //routes
@@ -20,6 +20,9 @@ container
         config: asValue(config),
         app: asClass(app).singleton(),
         HomeService: asClass(HomeService).singleton(),
+        UserService: asClass(UserService).singleton(),
+        ExerciseService: asClass(ExerciseService).singleton(),
+        WorkoutService: asClass(WorkoutService).singleton(),
         HomeController : asClass(HomeController.bind(HomeController)).singleton(),
         HomeRoutes: asFunction(HomeRoutes).singleton(),
         UserModel: asValue(UserModel),

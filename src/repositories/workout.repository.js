@@ -7,7 +7,7 @@ class WorkoutRepository extends BaseRepository{
         _workout = Workout;
     }
 
-    async getUserWorkout(author){
+    async getUserWorkouts(author){
         return await _workout.find({ author });
     }
     
@@ -15,11 +15,11 @@ class WorkoutRepository extends BaseRepository{
         return await _workout.findOne({ workout })
     }
 
-    async getWorkoutByType(type){
+    async getWorkoutsByType(type){
         return await _workout.findOne({ type });
     }
 
-    async getWorkoutByDifficulty(difficulty){
+    async getWorkoutsByDifficulty(difficulty){
         return await _workout.findOne({ difficulty });
     }
 }
