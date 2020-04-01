@@ -9,8 +9,9 @@ const { HomeController } = require('../controllers');
 const { HomeRoutes } = require('../routes/index.routes');
 const Routes = require('../routes');
 //models
-const { UserModel, ExcerciseModel, WorkoutModel } = require('../models');
-
+const { UserModel, ExerciseModel, WorkoutModel } = require('../models');
+//repositories
+const { UserRepository, ExerciseRepository, WorkoutRepository } = require('../repositories');
 const container = createContainer();
 
 container
@@ -22,8 +23,11 @@ container
         HomeController : asClass(HomeController.bind(HomeController)).singleton(),
         HomeRoutes: asFunction(HomeRoutes).singleton(),
         UserModel: asValue(UserModel),
-        ExcerciseModel: asValue(ExcerciseModel),
-        WorkoutModel: asValue(WorkoutModel)
+        ExerciseModel: asValue(ExerciseModel),
+        WorkoutModel: asValue(WorkoutModel),
+        UserRepository: asClass(UserRepository).singleton(),
+        WorkoutRepository: asClass(WorkoutRepository).singleton(),
+        ExerciseRepository: asClass(ExerciseRepository).singleton()
     })
 
 module.exports = container;
