@@ -28,17 +28,17 @@ class ExerciseService extends BaseService{
         return exercises;
     }
 
-    async getExcercise(exerciseName){
-        const exercise = await _exerciseRepository.getExercise(exerciseName);
+    async getExcercisesByName(exerciseName){
+        const exercises = await _exerciseRepository.getExcercisesByName(exerciseName);
 
-        if(!exercise){
+        if(!exercises){
             const error = new Error();
             error.stats = 404;
             error.message = "Exercise not found";
             throw error;
         }
 
-        return exercise;
+        return exercises;
     }
     
     async getExercisesByMuscularGroup(muscular_group){
@@ -81,7 +81,7 @@ class ExerciseService extends BaseService{
         return exercises;
     }
 
-    async addExercise(exercise, workoutId){
+    async addExercise(exerciseId, workoutId){
         if(!workoutId){
             const error = new Error();
             error.status = 400;
@@ -98,7 +98,7 @@ class ExerciseService extends BaseService{
             throw error;
         }
 
-        workout.exercises.push(exercise);
+        workout.exercises.push(exerciseId);
 
         return await _workoutRepository.update(workout, { exercises: workout.exercises });
     }

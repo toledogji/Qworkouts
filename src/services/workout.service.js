@@ -7,17 +7,17 @@ class WorkoutService extends BaseService {
         _workoutRepository = WorkoutRepository;
     }
     
-    async getWorkout(workoutName){
-        const workout = await _workoutRepository.getWorkout(workoutName);
+    async getWorkoutsByName(workoutName){
+        const workouts = await _workoutRepository.getWorkoutsByName(workoutName);
 
-        if(!workout){
+        if(!workouts){
             const error = new Error();
             error.stats = 404;
             error.message = "Workout not found";
             throw error;
         }
 
-        return workout;
+        return workouts;
     }
     
     async getUserWorkouts(author){
