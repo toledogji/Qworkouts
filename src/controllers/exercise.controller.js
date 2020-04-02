@@ -13,7 +13,8 @@ class ExerciseController{
     }
 
     async getAll(req, res){
-        const exercises = await _exerciseService.getAll();
+        const { pageSize, pageNum } = req.query;
+        const exercises = await _exerciseService.getAll(pageSize, pageNum);
         return res.send(exercises);
     }
 
