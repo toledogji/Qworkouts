@@ -2,25 +2,25 @@ const BaseRepository = require('./base.repository');
 let _workout = null;
 
 class WorkoutRepository extends BaseRepository{
-    constructor({ Workout }){
-        super(Workout);
-        _workout = Workout;
+    constructor({ WorkoutModel }){
+        super(WorkoutModel);
+        _workout = WorkoutModel;
     }
 
     async getUserWorkouts(author){
         return await _workout.find({ author });
     }
     
-    async getWorkout(workout){
-        return await _workout.findOne({ workout })
+    async getWorkoutsByName(workoutName){
+        return await _workout.find({ workoutName })
     }
 
     async getWorkoutsByType(type){
-        return await _workout.findOne({ type });
+        return await _workout.find({ type });
     }
 
     async getWorkoutsByDifficulty(difficulty){
-        return await _workout.findOne({ difficulty });
+        return await _workout.find({ difficulty });
     }
 }
 
