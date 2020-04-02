@@ -16,4 +16,4 @@ module.exports = function({ WorkoutController }){
     router.post("/:workoutId/downvote", WorkoutController.downvoteWorkout);
 
     return router;
-}
+};

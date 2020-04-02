@@ -14,4 +14,4 @@ module.exports = function({ ExerciseController }){
     router.delete("/:exerciseId", ExerciseController.delete);
  
     return router;
-}
+};

@@ -1,16 +1,16 @@
 const { createContainer, asClass, asValue, asFunction } = require('awilix');
 const config = require('../config');
 const app = require('.');
-//services
-const { HomeService, UserService, ExerciseService, WorkoutService } = require('../services');
-//controllers
-const { HomeController, UserController, ExerciseController, WorkoutController } = require('../controllers');
-//routes
-const { HomeRoutes, UserRoutes, ExerciseRoutes, WorkoutRoutes } = require('../routes/index.routes');
+//Services
+const { HomeService, UserService, ExerciseService, WorkoutService, AuthService } = require('../services');
+//Controllers
+const { HomeController, UserController, ExerciseController, WorkoutController, AuthController } = require('../controllers');
+//Routes
+const { HomeRoutes, UserRoutes, ExerciseRoutes, WorkoutRoutes, AuthRoutes } = require('../routes/index.routes');
 const Routes = require('../routes');
-//models
+//Models
 const { UserModel, ExerciseModel, WorkoutModel } = require('../models');
-//repositories
+//Repositories
 const { UserRepository, ExerciseRepository, WorkoutRepository } = require('../repositories');
 const container = createContainer();
 
@@ -24,16 +24,19 @@ container
         UserService: asClass(UserService).singleton(),
         ExerciseService: asClass(ExerciseService).singleton(),
         WorkoutService: asClass(WorkoutService).singleton(),
+        AuthService: asClass(AuthService).singleton(),
         //Controllers
         HomeController : asClass(HomeController.bind(HomeController)).singleton(),
         UserController: asClass(UserController.bind(UserController)).singleton(),
         ExerciseController: asClass(ExerciseController.bind(ExerciseController)).singleton(),
         WorkoutController: asClass(WorkoutController.bind(WorkoutController)).singleton(),
+        AuthController: asClass(AuthController.bind(AuthController)).singleton(),
         //Routes
         HomeRoutes: asFunction(HomeRoutes).singleton(),
         UserRoutes: asFunction(UserRoutes).singleton(),
         ExerciseRoutes: asFunction(ExerciseRoutes).singleton(),
         WorkoutRoutes: asFunction(WorkoutRoutes).singleton(),
+        AuthRoutes: asFunction(AuthRoutes).singleton(),
         //Models
         UserModel: asValue(UserModel),
         ExerciseModel: asValue(ExerciseModel),
