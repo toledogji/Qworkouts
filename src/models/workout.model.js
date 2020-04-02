@@ -3,7 +3,7 @@ const { ExcerciseModel } = require('.')
 const { Schema } = mongoose;
 
 const WorkoutSchema = new Schema({
-    workout: {type: String, required: true},
+    name: {type: String, required: true},
     description: {type: String},
     type: {type: String},
     difficulty: {type: String},
