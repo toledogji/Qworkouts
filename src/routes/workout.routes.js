@@ -6,15 +6,15 @@ module.exports = function({ WorkoutController }){
 
     router.get("/:workoutId", [AuthMiddleware], WorkoutController.get);
     router.get("/", [AuthMiddleware, ParseIntMiddleware], WorkoutController.getAll);
-    router.get("/:workoutName/all", [AuthMiddleware], WorkoutController.getWorkoutsByName);
-    router.get("/:userId/all", [AuthMiddleware],WorkoutController.getUserWorkouts);
-    router.get("/:type/all", [AuthMiddleware], WorkoutController.getWorkoutsByType);
-    router.get("/:difficulty/all", [AuthMiddleware], WorkoutController.getWorkoutsByDifficulty);
+    router.get("/user/:userId", [AuthMiddleware],WorkoutController.getUserWorkouts);
+    router.get("/type/:type", [AuthMiddleware], WorkoutController.getWorkoutsByType);
+    router.get("/difficulty/:difficulty", [AuthMiddleware], WorkoutController.getWorkoutsByDifficulty);
     router.post("/", [AuthMiddleware], WorkoutController.create);
     router.patch("/:workoutId", [AuthMiddleware], WorkoutController.update);
     router.delete("/:workoutId", [AuthMiddleware], WorkoutController.delete);
-    router.post("/:workoutId/upvote", [AuthMiddleware], WorkoutController.upvoteWorkout);
-    router.post("/:workoutId/downvote", [AuthMiddleware], WorkoutController.downvoteWorkout);
+    router.post("/upvote/:workoutId", [AuthMiddleware], WorkoutController.upvoteWorkout);
+    router.post("/downvote/:workoutId", [AuthMiddleware], WorkoutController.downvoteWorkout);
+    router.post("/addExercise/:exerciseId/:workoutId", [AuthMiddleware], WorkoutController.addExercise);
 
     return router;
 };

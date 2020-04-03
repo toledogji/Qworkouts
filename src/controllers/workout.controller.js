@@ -36,13 +36,7 @@ class WorkoutController{
         const { workoutId } = req.params;
         const deletedWorkout = await _workoutService.delete(workoutId);
         return res.send(deletedWorkout);
-    }
-    
-    async getWorkoutsByName(req, res){
-        const { workoutName } = req.params;
-        const workouts = await _workoutService.getWorkoutByName(workoutName);
-        return res.send(workouts);
-    }
+    } 
 
     async getUserWorkouts(req, res){
         const { userId } = req.params;
@@ -62,15 +56,21 @@ class WorkoutController{
         return res.send(workouts);
     }
 
+    async addExercise(req, res){
+        const { exerciseId, workoutId } = req.params;
+        const workout = await _workoutService.addExercise(exerciseId, workoutId);
+        return res.send(workout);
+    }
+
     async upvoteWorkout(req, res){
         const { workoutId } = req.params;
-        const workout = await _workoutService.upvoteIdea(workoutId);
+        const workout = await _workoutService.upvoteWorkout(workoutId);
         return res.send(workout);
     }
 
     async downvoteWorkout(req, res){
         const { workoutId } = req.params;
-        const workout = await _workoutService.downvoteIdea(workoutId);
+        const workout = await _workoutService.downvoteWorkout(workoutId);
         return res.send(workout);
     }
 }

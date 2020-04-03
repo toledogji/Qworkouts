@@ -44,12 +44,6 @@ class ExerciseController{
         return res.send(exercises);
     }
 
-    async getExercisesByName(req, res){
-        const { exerciseName } = req.params;
-        const exercises = await _exerciseService.getExercisesByName(exerciseName);
-        return res.send(exercises);
-    }
-
     async getExercisesByMuscularGroup(req, res){
         const { muscular_group } = req.params;
         const exercises = await _exerciseService.getExercisesByMuscularGroup(muscular_group);
@@ -58,15 +52,10 @@ class ExerciseController{
 
     async getExercisesByDifficulty(req, res){
         const { difficulty } = req.params;
-        const exercises = await _exerciseService.getUserExercisesByDifficulty(difficulty);
+        const exercises = await _exerciseService.getExercisesByDifficulty(difficulty);
         return res.send(exercises);
     }
-
-    async addExercise(req, res){
-        const { exerciseId, workoutId } = req.params;
-        const workout = await _exerciseService.addExercise(exerciseId, workoutId);
-        return res.send(workout);
-    }
+ 
 }
 
 module.exports = ExerciseController;

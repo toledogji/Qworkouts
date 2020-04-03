@@ -11,10 +11,6 @@ class WorkoutRepository extends BaseRepository{
         return await _workout.find({ author });
     }
     
-    async getWorkoutsByName(workoutName){
-        return await _workout.find({ workoutName })
-    }
-
     async getWorkoutsByType(type){
         return await _workout.find({ type });
     }

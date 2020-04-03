@@ -5,20 +5,7 @@ class WorkoutService extends BaseService {
     constructor({ WorkoutRepository }){
         super(WorkoutRepository);
         _workoutRepository = WorkoutRepository;
-    }
-    
-    async getWorkoutsByName(workoutName){
-        const workouts = await _workoutRepository.getWorkoutsByName(workoutName);
-
-        if(!workouts){
-            const error = new Error();
-            error.stats = 404;
-            error.message = "Workout not found";
-            throw error;
-        }
-
-        return workouts;
-    }
+    } 
     
     async getUserWorkouts(author){
         if(!author){
@@ -81,6 +68,28 @@ class WorkoutService extends BaseService {
         return workouts;
     }
 
+    async addExercise(exerciseId, workoutId){
+        if(!workoutId){
+            const error = new Error();
+            error.status = 400;
+            error.message = "Workout must be sent";
+            throw error;
+        }
+
+        const workout = await _workoutRepository.get(workoutId);
+
+        if(!workout){
+            const error = new Error();
+            error.stats = 404;
+            error.message = "Workout not found";
+            throw error;
+        }
+
+        workout.exercises.push(exerciseId);
+
+        return await _workoutRepository.update(workout, { exercises: workout.exercises });
+    }
+    
     async upvoteWorkout(workoutId){
         if(!workoutId){
             const error = new Error();
