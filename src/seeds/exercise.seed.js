@@ -97,7 +97,7 @@ mongoose.connect(MONGO_URI, { useNewUrlParser: true, useUnifiedTopology: true })
                 muscle_group: exerciseMuscleGroup,
                 equipment: exerciseEquipment,
                 videoLink: exerciseVideoLink,
-                thumbnailLink: exerciseThumbnail
+                thumbnail: exerciseThumbnail
             };
             exercises.push(exercise);
             console.log(`${exercise.name} has been added correctly`);
