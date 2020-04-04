@@ -6,7 +6,7 @@ module.exports = function({ ExerciseController }){
 
     router.get("/:exerciseId", [AuthMiddleware], ExerciseController.get);
     router.get("",[AuthMiddleware, ParseIntMiddleware], ExerciseController.getAll);
-    router.get("/muscularGroup/:muscular_group", [AuthMiddleware], ExerciseController.getExercisesByMuscularGroup);
+    router.get("/muscleGroup/:muscle_group", [AuthMiddleware], ExerciseController.getExercisesByMuscleGroup);
     router.get("/difficulty/:difficulty", [AuthMiddleware], ExerciseController.getExercisesByDifficulty);
     router.post("", [AuthMiddleware], ExerciseController.create);
     router.patch("/:exerciseId", [AuthMiddleware], ExerciseController.update);
