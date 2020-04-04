@@ -7,7 +7,8 @@ const ExerciseSchema = new Schema({
     difficulty: {type: String},
     muscle_group: {type: [String]},
     equipment: {type: [String]},
-    videoLink: {type: String}
+    videoLink: {type: String},
+    thumbnailLink: {type: String}
 }) 
 
 

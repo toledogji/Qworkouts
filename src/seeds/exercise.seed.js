@@ -46,9 +46,15 @@ mongoose.connect(MONGO_URI, { useNewUrlParser: true, useUnifiedTopology: true })
         const exerciseLink = "https://www.thenx.com/exercises/" + exerciseIndex;
         try{
             const htmlExercise = await axios.get(exerciseLink);
-            const $ = cheerio.load(htmlExercise.data);
+            let $ = cheerio.load(htmlExercise.data);
             const exerciseName = $(".card-header").text().trim();
             const exerciseVideoLink = $("iframe").first().attr("src");
+            const htmlExerciseVideo = await axios.get(exerciseVideoLink);
+            const baseVimeoUrlVideo = "https://i.vimeocdn.com/video/";
+            let thumbIndex = htmlExerciseVideo.data.search(baseVimeoUrlVideo);
+            const slicedThumbnailUrl = htmlExerciseVideo.data.slice(thumbIndex, thumbIndex + baseVimeoUrlVideo.length + 20);
+            const exerciseThumbnail = slicedThumbnailUrl.slice(0, slicedThumbnailUrl.indexOf('?'));
+
             let exerciseDifficulty = difficulties.filter( (difficulty) => {
                 return exerciseName.toLowerCase().includes(difficulty);
             })[0];
@@ -91,8 +97,10 @@ mongoose.connect(MONGO_URI, { useNewUrlParser: true, useUnifiedTopology: true })
                 muscle_group: exerciseMuscleGroup,
                 equipment: exerciseEquipment,
                 videoLink: exerciseVideoLink,
+                thumbnail: exerciseThumbnail
             };
             exercises.push(exercise);
+            console.log(`${exercise.name} has been added correctly`);
             exerciseIndex++;  
         }catch{
             console.log(`${exerciseLink} returned 404`);
