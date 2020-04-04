@@ -7,8 +7,8 @@ class ExerciseRepository extends BaseRepository{
         _exercise = ExerciseModel;
     }
 
-    async getExercisesByMuscularGroup(muscular_group){
-        return await _exercise.find({ muscular_group });
+    async getExercisesByMuscleGroup(muscle_group){
+        return await _exercise.find({ muscle_group });
     }
 
     async getExercisesByDifficulty(difficulty){

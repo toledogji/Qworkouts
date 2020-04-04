@@ -28,15 +28,14 @@ class ExerciseService extends BaseService{
         return exercises;
     }
 
-    async getExercisesByMuscularGroup(muscular_group){
-        if(!muscular_group){
+    async getExercisesByMuscleGroup(muscle_group){
+        if(!muscle_group){
             const error = new Error();
             error.status = 400;
-            error.message = "Muscular group must be sent";
+            error.message = "Muscle group must be sent";
             throw error;
         }
-
-        const exercises = await _exerciseRepository.getExercisesByMuscularGroup(muscular_group);
+        const exercises = await _exerciseRepository.getExercisesByMuscleGroup(muscle_group);
 
         if(!exercises){
             const error = new Error();

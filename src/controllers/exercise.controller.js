@@ -44,9 +44,9 @@ class ExerciseController{
         return res.send(exercises);
     }
 
-    async getExercisesByMuscularGroup(req, res){
-        const { muscular_group } = req.params;
-        const exercises = await _exerciseService.getExercisesByMuscularGroup(muscular_group);
+    async getExercisesByMuscleGroup(req, res){
+        const { muscle_group } = req.params;
+        const exercises = await _exerciseService.getExercisesByMuscleGroup(muscle_group);
         return res.send(exercises);
     }
 
