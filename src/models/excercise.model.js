@@ -8,7 +8,7 @@ const ExerciseSchema = new Schema({
     muscle_group: {type: [String]},
     equipment: {type: [String]},
     videoLink: {type: String},
-    thumbnailLink: {type: String}
+    thumbnail: {type: String}
 }) 
 
 
