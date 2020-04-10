@@ -24,8 +24,7 @@ module.exports = function({ HomeRoutes, UserRoutes, ExerciseRoutes, WorkoutRoute
     apiRoutes.use("/workout", WorkoutRoutes);
     apiRoutes.use("/auth", AuthRoutes);
     
-
-    router.use("/v1/api", apiRoutes);
+    router.use("/api/v1", apiRoutes);
     router.use("/api-docs", swaggerUI.serve, swaggerUI.setup(swaggerDocument));
     
     router.use(NotFoundMiddleware);
