@@ -6,6 +6,6 @@ const mongoose = require('mongoose');
 mongoose.set('useCreateIndex', true);
 
 mongoose
-    .connect(MONGO_URI, {usewNewUrlParser: true, useFindAndModify: false, useUnifiedTopology: true })
+    .connect(MONGO_URI, {useNewUrlParser: true, useFindAndModify: false, useUnifiedTopology: true })
     .then( () => server.start() )
     .catch(console.log);
