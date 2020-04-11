@@ -1,7 +1,7 @@
 language: node_js
 os: windows
-node_js:
-  - stable
+node_js: 
+  - node
 deploy:
   provider: heroku
   app: qworkouts
