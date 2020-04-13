@@ -1,0 +1,52 @@
+html {
+    box-sizing: border-box;
+    font-size: 62.5%;
+}
+*, *:before, *:after {
+    box-sizing: inherit;
+}
+
+body {
+    background: #000000; 
+    font-size: 1.6rem;
+}
+
+h1 {
+    text-align: center;
+    font-family: 'Staatliches', cursive;
+    color: #FFB101;
+    font-size: 4rem;
+}
+h3 {
+    font-family: 'Staatliches', cursive;
+    columns: #000000;;
+    font-size: 2.4rem;
+}
+h4 {
+    font-family: 'Staatliches', cursive;
+    columns: #000000;;
+    font-size: 2rem;
+}
+.btn {
+    font-size:1.4rem;
+}
+.difficulty {
+    font-family: 'Staatliches', cursive;
+    color: #FFB101;
+    font-weight: bold;
+    font-size: 2rem;
+}
+.contacto p {
+    font-size: 1.2rem;
+    margin: 0;
+}
+.list-group-item:hover {
+    background: white;
+}
+form {
+    border-radius: .3rem;
+}
+.img-exercise{
+    border-radius: 16px;
+}
+
