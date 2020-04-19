@@ -5,15 +5,42 @@ import Button from '@material-ui/core/Button';
 import DeleteIcon from '@material-ui/icons/Delete';
 import axiosClient from '../config/axios';
 import Swal from 'sweetalert2';
+import Modal from '@material-ui/core/Modal';
+import Backdrop from '@material-ui/core/Backdrop';
+import Fade from '@material-ui/core/Fade';
+import ReactPlayer from 'react-player';
 
 const useStyles = makeStyles((theme) => ({
     button: {
-      margin: theme.spacing(1),
+        margin: theme.spacing(1),
+
     },
+    modal: {
+        display: 'flex',
+        alignItems: 'center',
+        justifyContent: 'center',
+        width: '100%',
+        paddingRight: '64px',
+        paddingLeft: '64px'
+    },
+    test:{
+        width:'auto',
+        height: 'auto'
+    }
+
 }));
 
 const Exercise = (props) =>{
     const classes = useStyles();
+    const [open, setOpen] = React.useState(false);
+
+    const handleOpen = () => {
+        setOpen(true);
+    };
+
+    const handleClose = () => {
+        setOpen(false);
+    };    
 
     if(!props.exercise){
         props.history.push("/exercise");
@@ -71,7 +98,7 @@ const Exercise = (props) =>{
                                 </div>
                                 <div className="row">
                                     <div className="col">
-                                        <img className="img-fluid img-exercise" src={props.exercise.thumbnail} alt={props.exercise.name}></img>
+                                        <img className="img-fluid img-exercise" style={{cursor: "pointer"}} src={props.exercise.thumbnail} alt={props.exercise.name}  onClick={handleOpen}></img>
                                     </div>
                                     <div className="col">
                                         <h4>Muscle group:</h4>
@@ -99,9 +126,27 @@ const Exercise = (props) =>{
                             </div>
                         </div>
                     </div>
-                   
+                       <div>
+                            <Modal
+                                aria-labelledby="transition-modal-title"
+                                aria-describedby="transition-modal-description"
+                                className={classes.modal}
+                                open={open}
+                                onClose={handleClose}
+                                closeAfterTransition
+                                BackdropComponent={Backdrop}
+                                BackdropProps={{
+                                    timeout: 500,
+                                }}
+                            >
+                                <Fade in={open}>
+                                    <ReactPlayer url={props.exercise.videoLink} playing />
+                                </Fade>
+                            </Modal>
+                        </div>
                 </div>
             </div>
+
         </Fragment>
     );
 }
