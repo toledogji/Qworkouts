@@ -100,9 +100,10 @@ const NewExercise = (props) =>{
                                 label="Exercise Name" 
                                 variant="outlined" 
                             />
-                            <FormControl fullWidth variant="outlined" className={classes.formControl}>
+                            <FormControl required fullWidth variant="outlined" className={classes.formControl}>
                                 <InputLabel id="difficulty-label">Difficulty</InputLabel>
                                 <Select
+                                required="true"
                                 labelId="difficulty-label"
                                 id="difficulty"
                                 name="difficulty"
@@ -153,7 +154,7 @@ const NewExercise = (props) =>{
                                 >
                                     {equipments.map((element) => (
                                         <MenuItem key={element} value={element}>
-                                            <Checkbox checked={exercise.equipment.indexOf(element) > -1} />
+                                            <Checkbox style={{color: "#FFB101"}} checked={exercise.equipment.indexOf(element) > -1} />
                                             <ListItemText primary={element} />
                                         </MenuItem>
                                     ))}
