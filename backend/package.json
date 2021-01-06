@@ -21,7 +21,7 @@
   "homepage": "https://github.com/toledogji/nodejs-backend-section#readme",
   "dependencies": {
     "awilix": "^4.2.5",
-    "axios": "^0.19.2",
+    "axios": "^0.21.1",
     "bcryptjs": "^2.4.3",
     "cheerio": "^1.0.0-rc.3",
     "compression": "^1.7.4",
